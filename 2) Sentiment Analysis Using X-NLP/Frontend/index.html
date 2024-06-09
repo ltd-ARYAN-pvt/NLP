@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis Using XNLP</h1>
+        <textarea id="inputText" rows="4" cols="50" placeholder="Enter text here..."></textarea><br><br>
+        <button id="getSentiment" class="btn">Get Sentiment</button>
+        <button id="getExplanation" class="btn">Get Explanation</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#getSentiment').click(function() {
+                const text = $('#inputText').val();
+                $.ajax({
+                    url: 'http://127.0.0.1:5000/predict',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ text: text }),
+                    success: function(response) {
+                        $('#result').html(`<h3>Sentiment: ${response.sentiment}</h3>`);
+                    }
+                });
+            });
+
+            $('#getExplanation').click(function() {
+                const text = $('#inputText').val();
+                localStorage.setItem('inputText', text);
+                window.location.href = 'explanation.html';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explanation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Explanation</h1>
+        <div id="originalText"></div>
+        <div id="explanation"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const text = localStorage.getItem('inputText');
+            $('#originalText').html(`<h3>Original Text: ${text}</h3>`);
+
+            $.ajax({
+                url: 'http://127.0.0.1:5000/explain',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ text: text }),
+                success: function(response) {
+                    $('#explanation').html(`
+                        <h3>Explanation:</h3>
+                        <img src="data:image/png;base64,${response.explanation}" alt="Explanation Plot">
+                    `);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
