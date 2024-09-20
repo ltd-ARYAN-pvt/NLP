@@ -12,3 +12,7 @@ Expressing an opinion (e.g., "I love this restaurant.")<br>
 Apologizing (e.g., "Sorry about that.")<br>
 
 ## 2) Sentiment Analysis using X-NLP
+
+This work proposal outlines the development of a sophisticated sentiment analysis system, titled "Sentiment Analysis using XNLP," leveraging Natural Language Processing (NLP) and deep learning (DL) techniques. The primary objective is to create an advanced sentiment analysis model that not only accurately categorizes sentiments in diverse textual data but also provides transparent explanations for its predictions.
+
+Motivated by the necessity for transparent and interpretable sentiment analysis models, the work aims to address the limitations of conventional models by incorporating explainable AI (XAI) techniques. By integrating XAI with the trained NLP model, users can gain insights into how sentiment classifications are made, enhancing trust and comprehension in the model's predictions.
