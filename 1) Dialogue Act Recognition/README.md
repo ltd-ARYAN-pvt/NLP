@@ -8,5 +8,5 @@ Dialogue Act Recognition (DAR) is a sub-task of Natural Language Processing (NLP
 **Making a statement** (e.g., "I'm going to the store.")<br>
 **Asking a question** (e.g., "What time is it?")<br>
 **Giving a command** (e.g., "Close the door.")<br>
-**Expressing an opinion (e.g., "I love this restaurant.")<br>
+**Expressing an opinion** (e.g., "I love this restaurant.")<br>
 **Apologizing** (e.g., "Sorry about that.")<br>
