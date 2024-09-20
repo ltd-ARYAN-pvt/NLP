@@ -1,7 +1,7 @@
 # NLP Projects
-## Author:- ***Aryan Pandey***
+## Author:- ***Aryan Pandey and Ravi A***
 
-# 1) Dailogue Act Recognition
+# 1) Dialogue Act Recognition
 
 Dialogue Act Recognition (DAR) is a sub-task of Natural Language Processing (NLP) that involves identifying the intention or action behind a speaker's utterance in a conversation. It's about recognizing the function or purpose of a sentence or phrase in a dialogue, such as:<br>
 <br>
