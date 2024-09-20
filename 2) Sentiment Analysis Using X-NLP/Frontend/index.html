@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentiment Analysis</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
+        <button id="toggleTheme" class="btn">Toggle Theme</button>
         <h1>Sentiment Analysis Using XNLP</h1>
         <textarea id="inputText" rows="4" cols="50" placeholder="Enter text here..."></textarea><br><br>
         <button id="getSentiment" class="btn">Get Sentiment</button>
         <button id="getExplanation" class="btn">Get Explanation</button>
+        <div>
+            <h2>Upload CSV for Analysis</h2>
+            <input type="file" id="csvFile" accept=".csv"><br><br>
+            <input type="text" id="textColumnName" placeholder="Enter the text column name"><br><br>
+            <button id="uploadCsv" class="btn">Upload CSV</button>
+            <div id="loader" style="display:none;">Loading...</div>
+        </div>
         <div id="result"></div>
     </div>
 
+    <script src="js/themeToggle.js"></script>
     <script>
         $(document).ready(function() {
             $('#getSentiment').click(function() {
@@ -33,8 +42,40 @@
 
             $('#getExplanation').click(function() {
                 const text = $('#inputText').val();
-                localStorage.setItem('inputText', text);
+                localStorage.setItem('explanationText', text);
                 window.location.href = 'explanation.html';
+            });
+
+            $('#uploadCsv').click(function() {
+                const fileInput = $('#csvFile')[0];
+                const textColumnName = $('#textColumnName').val();
+                if (fileInput.files.length === 0) {
+                    alert("Please select a CSV file to upload.");
+                    return;
+                }
+                if (textColumnName.trim() === "") {
+                    alert("Please enter the text column name.");
+                    return;
+                }
+                
+                const formData = new FormData();
+                formData.append('dataset', fileInput.files[0]);
+                formData.append('text_feild', textColumnName);
+
+                localStorage.removeItem('dataProcessed');
+                localStorage.removeItem('dashboardData');
+
+                // Store the formData in localStorage
+                const fileReader = new FileReader();
+                fileReader.onload = function(event) {
+                    const fileData = event.target.result;
+                    localStorage.setItem('csvData', fileData);
+                    localStorage.setItem('textColumnName', textColumnName);
+                    // Reset the dataProcessed flag
+                    localStorage.setItem('dataProcessed', 'false');
+                    window.location.href = 'db.html';
+                };
+                fileReader.readAsDataURL(fileInput.files[0]);
             });
         });
     </script>

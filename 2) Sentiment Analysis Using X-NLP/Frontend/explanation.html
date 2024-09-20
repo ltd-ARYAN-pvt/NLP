@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explanation</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <div class="container">
+        <button id="toggleTheme" class="btn">Toggle Theme</button>
         <h1>Explanation</h1>
         <div id="originalText"></div>
         <div id="explanation"></div>
+        <div class="flex-container">
+            <div id="explanationList"></div>
+        </div>
     </div>
 
+    <script src="js/themeToggle.js"></script>
     <script>
-        $(document).ready(function() {
-            const text = localStorage.getItem('inputText');
+        $(document).ready(function () {
+            const text = localStorage.getItem('explanationText');
             $('#originalText').html(`<h3>Original Text: ${text}</h3>`);
 
             $.ajax({
@@ -24,14 +31,20 @@
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({ text: text }),
-                success: function(response) {
+                success: function (response) {
                     $('#explanation').html(`
-                        <h3>Explanation:</h3>
-                        <img src="data:image/png;base64,${response.explanation}" alt="Explanation Plot">
+                        <h2><b>Explanation for <i>${response.pred}</i> prediction</b></h2>
+                        ${response.html}
+                        `);
+                    $('#explanationList').html(`
+                    <img src="data:image/png;base64,${response.explanation}" alt="Explanation Plot">
+                        <h3>Feature Contributions:</h3>
+                        ${response.list_html}
                     `);
                 }
             });
         });
     </script>
 </body>
+
 </html>

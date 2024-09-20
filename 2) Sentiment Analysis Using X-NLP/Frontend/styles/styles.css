@@ -1,0 +1,91 @@
+:root {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --container-bg-color: white;
+    --btn-bg-color: #007bff;
+    --btn-hover-bg-color: #0056b3;
+    --input-border-color: #ccc;
+}
+
+[data-theme='dark'] {
+    --background-color: #333;
+    --text-color: #f4f4f4;
+    --container-bg-color: #444;
+    --btn-bg-color: #0056b3;
+    --btn-hover-bg-color: #003f7f;
+    --input-border-color: #555;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--container-bg-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--btn-bg-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover-bg-color);
+}
+
+#result, #originalText, #explanation,#explanationList {
+    margin-top: 20px;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+ul {
+    text-align: left;
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 5px 0;
+}
+
+.flex-container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: row;
+}
